@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 
 import { useModuleTranslation } from '@lifeforge/localization'
-import { ErrorScreen, Flex, surface } from '@lifeforge/ui'
+import { ErrorScreen, Flex, Icon, Text, surface } from '@lifeforge/ui'
 
 import type { ParsedSchematic } from '@/utils/schematicPreview'
 
@@ -26,52 +26,61 @@ export function SchematicViewer({ parsed }: { parsed: ParsedSchematic }) {
   } = useSchematicRenderer({ canvasRef, containerRef, parsed })
 
   return (
-    <Flex
-      ref={containerRef}
-      align="center"
-      bg={surface.light}
-      height="50vh"
-      justify="center"
-      overflow="hidden"
-      position="relative"
-      r="xl"
-      style={{
-        cursor: dragging ? 'grabbing' : 'grab',
-        isolation: 'isolate',
-        touchAction: 'none',
-        userSelect: 'none'
-      }}
-      width="100%"
-      onPointerCancel={endPointer}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={endPointer}
-    >
-      <StageBackdrop />
-      {error ? (
-        <ErrorScreen message={t('viewer.webglError')} showRetryButton={false} />
-      ) : (
-        // eslint-disable-next-line local/no-native-elements
-        <canvas
-          ref={canvasRef}
-          style={{
-            display: 'block',
-            height: '100%',
-            position: 'relative',
-            width: '100%',
-            zIndex: 1
-          }}
-        />
-      )}
-      {!error && (
-        <>
-          <CornerBrackets />
-          <ViewerHud
-            hint={t('viewer.hint')}
-            yawLabelRef={yawLabelRef}
-            zoomLabelRef={zoomLabelRef}
+    <Flex direction="column" gap="sm" width="100%">
+      <Flex
+        ref={containerRef}
+        align="center"
+        bg={surface.light}
+        height="50vh"
+        justify="center"
+        overflow="hidden"
+        position="relative"
+        r="xl"
+        style={{
+          cursor: dragging ? 'grabbing' : 'grab',
+          isolation: 'isolate',
+          touchAction: 'none',
+          userSelect: 'none'
+        }}
+        width="100%"
+        onPointerCancel={endPointer}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endPointer}
+      >
+        <StageBackdrop />
+        {error ? (
+          <ErrorScreen message={t('viewer.webglError')} showRetryButton={false} />
+        ) : (
+          // eslint-disable-next-line local/no-native-elements
+          <canvas
+            ref={canvasRef}
+            style={{
+              display: 'block',
+              height: '100%',
+              position: 'relative',
+              width: '100%',
+              zIndex: 1
+            }}
           />
-        </>
+        )}
+        {!error && (
+          <>
+            <CornerBrackets />
+            <ViewerHud
+              yawLabelRef={yawLabelRef}
+              zoomLabelRef={zoomLabelRef}
+            />
+          </>
+        )}
+      </Flex>
+      {!error && (
+        <Flex align="center" gap="xs" justify="center">
+          <Icon color="muted" icon="tabler:hand-move" size="1em" />
+          <Text color="muted" size="sm">
+            {t('viewer.hint')}
+          </Text>
+        </Flex>
       )}
     </Flex>
   )

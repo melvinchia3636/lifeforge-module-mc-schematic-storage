@@ -3,11 +3,9 @@ import type { RefObject } from 'react'
 import { TagChip, Text, usePersonalization } from '@lifeforge/ui'
 
 export function ViewerHud({
-  hint,
   yawLabelRef,
   zoomLabelRef
 }: {
-  hint: string
   yawLabelRef: RefObject<HTMLElement | null>
   zoomLabelRef: RefObject<HTMLElement | null>
 }) {
@@ -31,13 +29,6 @@ export function ViewerHud({
       ),
       right: '1.5rem',
       top: '1.5rem'
-    },
-    {
-      bottom: '1.5rem',
-      icon: 'tabler:hand-move',
-      key: 'hint',
-      label: hint,
-      left: '1.5rem'
     },
     {
       bottom: '1.5rem',
