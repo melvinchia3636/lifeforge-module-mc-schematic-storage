@@ -1,4 +1,49 @@
 {
   "title": "MC 藍圖儲存",
-  "description": "整理你的藍圖，預覽每個建築，並規劃所需的材料。"
+  "description": "整理你的藍圖，預覽每個建築，並規劃所需的材料。",
+  "buttons": {
+    "upload": "上傳",
+    "download": "下載",
+    "delete": "刪除",
+    "preview": "查看預覽",
+    "edit": "編輯"
+  },
+  "inputs": {
+    "name": "名稱",
+    "file": "藍圖檔案",
+    "rotation": "旋轉角度"
+  },
+  "modals": {
+    "upload": "上傳藍圖",
+    "modify": "修改藍圖"
+  },
+  "items": {
+    "schematic": "藍圖"
+  },
+  "formats": {
+    "litematic": "Litematica",
+    "schem": "Sponge",
+    "schematic": "MCEdit"
+  },
+  "empty": {
+    "schematic": {
+      "title": "還沒有藍圖",
+      "description": "上傳 .litematic、.schem 或 .schematic 檔案來建立你的藍圖庫。"
+    },
+    "result": {
+      "title": "沒有結果",
+      "description": "沒有符合搜尋的藍圖。"
+    }
+  },
+  "messages": {
+    "uploaded": "藍圖已上傳",
+    "deleted": "藍圖已刪除",
+    "unsupportedFormat": "只允許 .litematic、.schem 和 .schematic 檔案。",
+    "fileRequired": "請選擇要上傳的藍圖檔案。",
+    "updated": "藍圖已更新"
+  },
+  "deleteConfirmation": {
+    "title": "刪除藍圖",
+    "description": "永久刪除「{{name}}」？已儲存的檔案也會一併刪除。"
+  }
 }

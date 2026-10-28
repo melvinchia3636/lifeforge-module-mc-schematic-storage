@@ -10,9 +10,10 @@
   "author": "melvinchia3636 <melvinchia623600@gmail.com>",
   "description": "Keep your schematics organised, preview every build, and plan the materials you need.",
   "scripts": {
-    "typecheck": "pnpm run typecheck:client && pnpm run typecheck:server",
+    "typecheck": "pnpm run typecheck:client && pnpm run typecheck:server && pnpm run typecheck:lib",
     "typecheck:client": "cd client && tsc",
     "typecheck:server": "cd server && tsc",
+    "typecheck:lib": "cd lib && tsc",
     "build": "pnpm run build:client && pnpm run build:server",
     "build:client": "cd client && vite build",
     "build:server": "cd server && vite build"
@@ -20,13 +21,15 @@
   "dependencies": {},
   "devDependencies": {},
   "lifeforge": {
-    "icon": "energy-icons:blueprint-20-bold",
+    "icon": "ph:blueprint-bold",
     "category": "Games"
   },
   "peerDependencies": {
     "@lifeforge/api": "workspace:*",
     "@lifeforge/configs": "workspace:*",
+    "@lifeforge/drizzle": "workspace:*",
     "@lifeforge/federation": "workspace:*",
+    "@lifeforge/file-storage": "workspace:*",
     "@lifeforge/localization": "workspace:*",
     "@lifeforge/server-utils": "workspace:*",
     "@lifeforge/ui": "workspace:*"

@@ -1,4 +1,49 @@
 {
   "title": "MC Schematic Storage",
-  "description": "Keep your schematics organised, preview every build, and plan the materials you need."
+  "description": "Keep your schematics organised, preview every build, and plan the materials you need.",
+  "buttons": {
+    "upload": "Upload",
+    "download": "Download",
+    "delete": "Delete",
+    "preview": "View Preview",
+    "edit": "Edit"
+  },
+  "inputs": {
+    "name": "Name",
+    "file": "Schematic File",
+    "rotation": "Rotation"
+  },
+  "modals": {
+    "upload": "Upload Schematic",
+    "modify": "Modify Schematic"
+  },
+  "items": {
+    "schematic": "schematic"
+  },
+  "formats": {
+    "litematic": "Litematic",
+    "schem": "Sponge",
+    "schematic": "MCEdit"
+  },
+  "empty": {
+    "schematic": {
+      "title": "No Schematics Yet",
+      "description": "Upload a .litematic, .schem, or .schematic file to start building your library."
+    },
+    "result": {
+      "title": "No Results",
+      "description": "No schematics match your search."
+    }
+  },
+  "messages": {
+    "uploaded": "Schematic uploaded",
+    "deleted": "Schematic deleted",
+    "unsupportedFormat": "Only .litematic, .schem, and .schematic files are allowed.",
+    "fileRequired": "Select a schematic file to upload.",
+    "updated": "Schematic updated"
+  },
+  "deleteConfirmation": {
+    "title": "Delete Schematic",
+    "description": "Delete \"{{name}}\" permanently? The stored file will also be removed."
+  }
 }

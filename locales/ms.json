@@ -1,4 +1,49 @@
 {
   "title": "Storan Skematik MC",
-  "description": "Susun skematik anda, pratonton setiap binaan, dan rancang bahan yang diperlukan."
+  "description": "Susun skematik anda, pratonton setiap binaan, dan rancang bahan yang diperlukan.",
+  "buttons": {
+    "upload": "Muat Naik",
+    "download": "Muat Turun",
+    "delete": "Padam",
+    "preview": "Lihat Pratonton",
+    "edit": "Sunting"
+  },
+  "inputs": {
+    "name": "Nama",
+    "file": "Fail Skematik",
+    "rotation": "Putaran"
+  },
+  "modals": {
+    "upload": "Muat Naik Skematik",
+    "modify": "Ubah Skematik"
+  },
+  "items": {
+    "schematic": "skematik"
+  },
+  "formats": {
+    "litematic": "Litematic",
+    "schem": "Sponge",
+    "schematic": "MCEdit"
+  },
+  "empty": {
+    "schematic": {
+      "title": "Belum Ada Skematik",
+      "description": "Muat naik fail .litematic, .schem, atau .schematic untuk mula membina pustaka anda."
+    },
+    "result": {
+      "title": "Tiada Hasil",
+      "description": "Tiada skematik sepadan dengan carian anda."
+    }
+  },
+  "messages": {
+    "uploaded": "Skematik dimuat naik",
+    "deleted": "Skematik dipadam",
+    "unsupportedFormat": "Hanya fail .litematic, .schem, dan .schematic dibenarkan.",
+    "fileRequired": "Pilih fail skematik untuk dimuat naik.",
+    "updated": "Skematik dikemas kini"
+  },
+  "deleteConfirmation": {
+    "title": "Padam Skematik",
+    "description": "Padam \"{{name}}\" secara kekal? Fail yang disimpan juga akan dipadam."
+  }
 }

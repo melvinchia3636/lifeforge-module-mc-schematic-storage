@@ -11,6 +11,7 @@
     "./src/**/*",
     "./manifest.ts",
     "./vite.config.ts",
-    "./contract.ts"
+    "./contract.ts",
+    "../lib/**/*"
   ]
 }

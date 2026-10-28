@@ -1,0 +1,4 @@
+{
+  "extends": "@lifeforge/configs/tsconfig/module.json",
+  "include": ["./**/*"]
+}

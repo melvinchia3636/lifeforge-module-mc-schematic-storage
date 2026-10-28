@@ -1,4 +1,49 @@
 {
   "title": "MC 蓝图存储",
-  "description": "整理你的蓝图，预览每个建筑，并规划所需的材料。"
+  "description": "整理你的蓝图，预览每个建筑，并规划所需的材料。",
+  "buttons": {
+    "upload": "上传",
+    "download": "下载",
+    "delete": "删除",
+    "preview": "查看预览",
+    "edit": "编辑"
+  },
+  "inputs": {
+    "name": "名称",
+    "file": "蓝图文件",
+    "rotation": "旋转角度"
+  },
+  "modals": {
+    "upload": "上传蓝图",
+    "modify": "修改蓝图"
+  },
+  "items": {
+    "schematic": "蓝图"
+  },
+  "formats": {
+    "litematic": "Litematic",
+    "schem": "Sponge",
+    "schematic": "MCEdit"
+  },
+  "empty": {
+    "schematic": {
+      "title": "还没有蓝图",
+      "description": "上传 .litematic、.schem 或 .schematic 文件来建立你的蓝图库。"
+    },
+    "result": {
+      "title": "没有结果",
+      "description": "没有符合搜索的蓝图。"
+    }
+  },
+  "messages": {
+    "uploaded": "蓝图已上传",
+    "deleted": "蓝图已删除",
+    "unsupportedFormat": "只允许 .litematic、.schem 和 .schematic 文件。",
+    "fileRequired": "请选择要上传的蓝图文件。",
+    "updated": "蓝图已更新"
+  },
+  "deleteConfirmation": {
+    "title": "删除蓝图",
+    "description": "永久删除“{{name}}”？已存储的文件也会一并删除。"
+  }
 }

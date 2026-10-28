@@ -1,6 +1,10 @@
 import { forgeRouter, writeContractFileToClient } from '@lifeforge/server-utils'
 
-const routes = forgeRouter({})
+import * as schematicsRouter from './routes/schematics'
+
+const routes = forgeRouter({
+  schematics: schematicsRouter
+})
 
 writeContractFileToClient(routes, import.meta.dirname)
 
