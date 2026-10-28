@@ -5,6 +5,7 @@ export interface Contract {
     create: EndpointSchematicsCreate;
     list: EndpointSchematicsList;
     remove: EndpointSchematicsRemove;
+    setCheckedMaterial: EndpointSchematicsSetCheckedMaterial;
     update: EndpointSchematicsUpdate;
   };
 }
@@ -31,6 +32,14 @@ export interface EndpointSchematicsCreate_OutputCREATED {
   rotation: number;
   preview_width: number;
   preview_height: number;
+  block_count: number;
+  material_types: number;
+  checked_materials:
+    | (string | number | boolean | null)
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[];
   file_size: number;
   created: string;
 }
@@ -58,6 +67,14 @@ export interface EndpointSchematicsList_OutputOK {
     rotation: number;
     preview_width: number;
     preview_height: number;
+    block_count: number;
+    material_types: number;
+    checked_materials:
+      | (string | number | boolean | null)
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[];
     file_size: number;
     created: string;
   }[];
@@ -81,6 +98,44 @@ export interface EndpointSchematicsRemove_InputQuery {
   id: string;
 }
 export interface EndpointSchematicsRemove_InputBody {}
+export interface EndpointSchematicsSetCheckedMaterial {
+  method: "post";
+  input: {
+    query?: EndpointSchematicsSetCheckedMaterial_InputQuery;
+    body?: EndpointSchematicsSetCheckedMaterial_InputBody;
+  };
+  output: {
+    OK: EndpointSchematicsSetCheckedMaterial_OutputOK;
+  };
+  media: null;
+}
+export interface EndpointSchematicsSetCheckedMaterial_InputQuery {
+  id: string;
+}
+export interface EndpointSchematicsSetCheckedMaterial_InputBody {
+  material: string;
+  checked: boolean;
+}
+export interface EndpointSchematicsSetCheckedMaterial_OutputOK {
+  id: string;
+  name: string;
+  format: string;
+  file: string;
+  preview: string;
+  rotation: number;
+  preview_width: number;
+  preview_height: number;
+  block_count: number;
+  material_types: number;
+  checked_materials:
+    | (string | number | boolean | null)
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[];
+  file_size: number;
+  created: string;
+}
 export interface EndpointSchematicsUpdate {
   method: "post";
   input: {
@@ -108,6 +163,14 @@ export interface EndpointSchematicsUpdate_OutputOK {
   rotation: number;
   preview_width: number;
   preview_height: number;
+  block_count: number;
+  material_types: number;
+  checked_materials:
+    | (string | number | boolean | null)
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[];
   file_size: number;
   created: string;
 }

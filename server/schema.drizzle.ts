@@ -1,5 +1,5 @@
 import { type RelationsBuilder } from 'drizzle-orm'
-import { integer, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { integer, jsonb, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 import { createModuleTable } from '@lifeforge/drizzle'
 
@@ -14,6 +14,12 @@ export const schematicEntries = pgTable('schematics', {
   rotation: integer('rotation').notNull().default(0),
   preview_width: integer('preview_width').notNull().default(0),
   preview_height: integer('preview_height').notNull().default(0),
+  block_count: integer('block_count').notNull().default(0),
+  material_types: integer('material_types').notNull().default(0),
+  checked_materials: jsonb('checked_materials')
+    .$type<string[]>()
+    .notNull()
+    .default([]),
   file_size: integer('file_size').notNull().default(0),
   created: timestamp('created', { mode: 'date' }).defaultNow().notNull()
 })

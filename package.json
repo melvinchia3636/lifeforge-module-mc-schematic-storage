@@ -16,9 +16,13 @@
     "typecheck:lib": "cd lib && tsc",
     "build": "pnpm run build:client && pnpm run build:server",
     "build:client": "cd client && vite build",
-    "build:server": "cd server && vite build"
+    "build:server": "cd server && vite build",
+    "assets": "tsx tools/build-mc-assets.ts"
   },
-  "dependencies": {},
+  "dependencies": {
+    "block-model-renderer": "2.20.0",
+    "three": "0.162.0"
+  },
   "devDependencies": {},
   "lifeforge": {
     "icon": "ph:blueprint-bold",

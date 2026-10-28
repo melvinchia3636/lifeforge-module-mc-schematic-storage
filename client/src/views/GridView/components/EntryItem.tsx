@@ -1,12 +1,12 @@
 import type { SchematicEntry } from '@'
-import dayjs from 'dayjs'
 
 import { useModuleTranslation } from '@lifeforge/localization'
-import { Card, Flex, Icon, TagChip, Text } from '@lifeforge/ui'
+import { Box, Card, Flex, TagChip, Text } from '@lifeforge/ui'
 
 import { SchematicActions } from '@/components/SchematicActions'
+import { SchematicEntryButtons } from '@/components/SchematicEntryButtons'
+import { SchematicMetadata } from '@/components/SchematicMetadata'
 import { SchematicPreview } from '@/components/SchematicPreview'
-import formatBytes from '@/utils/formatBytes'
 import { DEFAULT_FORMAT, FORMAT_META } from '@/utils/formatMeta'
 
 function EntryItem({ entry }: { entry: SchematicEntry }) {
@@ -37,18 +37,13 @@ function EntryItem({ entry }: { entry: SchematicEntry }) {
           <Text truncate as="h3" size="lg" weight="semibold">
             {entry.name}
           </Text>
-          <Flex align="center" gap="xs" minWidth="0" mt="xs" wrap="wrap">
-            <Text color="muted" size="sm">
-              {formatBytes(entry.file_size)}
-            </Text>
-            <Icon color="muted" icon="tabler:circle-filled" size="0.25em" />
-            <Text color="muted" size="sm">
-              {dayjs(entry.created).format('D MMM YYYY')}
-            </Text>
-          </Flex>
+          <SchematicMetadata entry={entry} />
         </Flex>
-        <SchematicActions entry={entry} />
       </Flex>
+      <SchematicEntryButtons entry={entry} type="grid" />
+      <Box position="absolute" right="1em" top="1em">
+        <SchematicActions entry={entry} />
+      </Box>
     </Card>
   )
 }

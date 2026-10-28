@@ -6,7 +6,9 @@
     "download": "Download",
     "delete": "Delete",
     "preview": "View Preview",
-    "edit": "Edit"
+    "edit": "Edit",
+    "materials": "Materials",
+    "view": "View"
   },
   "inputs": {
     "name": "Name",
@@ -15,7 +17,9 @@
   },
   "modals": {
     "upload": "Upload Schematic",
-    "modify": "Modify Schematic"
+    "modify": "Modify Schematic",
+    "materials": "Schematic Materials",
+    "viewer": "Schematic Viewer"
   },
   "items": {
     "schematic": "schematic"
@@ -25,6 +29,12 @@
     "schem": "Sponge",
     "schematic": "MCEdit"
   },
+  "metadata": {
+    "blocks": "Blocks",
+    "materialTypes": "Material Types",
+    "fileSize": "File Size",
+    "created": "Created"
+  },
   "empty": {
     "schematic": {
       "title": "No Schematics Yet",
@@ -33,6 +43,10 @@
     "result": {
       "title": "No Results",
       "description": "No schematics match your search."
+    },
+    "materials": {
+      "title": "No Materials",
+      "description": "This schematic does not contain any placeable blocks."
     }
   },
   "messages": {
@@ -40,10 +54,25 @@
     "deleted": "Schematic deleted",
     "unsupportedFormat": "Only .litematic, .schem, and .schematic files are allowed.",
     "fileRequired": "Select a schematic file to upload.",
-    "updated": "Schematic updated"
+    "updated": "Schematic updated",
+    "checklistFailed": "Failed to update the checklist"
   },
   "deleteConfirmation": {
     "title": "Delete Schematic",
     "description": "Delete \"{{name}}\" permanently? The stored file will also be removed."
+  },
+  "materials": {
+    "summary": "{{types}} material types · {{blocks}} blocks",
+    "material": "Material",
+    "count": "Count",
+    "gathered": "Gathered",
+    "progress": "{{checked}} / {{total}} gathered"
+  },
+  "viewer": {
+    "hint": "Drag to rotate · Scroll or pinch to zoom",
+    "reset": "Reset view",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "webglError": "3D viewing is not supported in this browser."
   }
 }

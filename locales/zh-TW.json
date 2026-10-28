@@ -6,7 +6,9 @@
     "download": "下載",
     "delete": "刪除",
     "preview": "查看預覽",
-    "edit": "編輯"
+    "edit": "編輯",
+    "materials": "材料",
+    "view": "查看"
   },
   "inputs": {
     "name": "名稱",
@@ -15,7 +17,9 @@
   },
   "modals": {
     "upload": "上傳藍圖",
-    "modify": "修改藍圖"
+    "modify": "修改藍圖",
+    "materials": "藍圖材料",
+    "viewer": "藍圖檢視器"
   },
   "items": {
     "schematic": "藍圖"
@@ -25,6 +29,12 @@
     "schem": "Sponge",
     "schematic": "MCEdit"
   },
+  "metadata": {
+    "blocks": "方塊",
+    "materialTypes": "材料種類",
+    "fileSize": "檔案大小",
+    "created": "建立時間"
+  },
   "empty": {
     "schematic": {
       "title": "還沒有藍圖",
@@ -33,6 +43,10 @@
     "result": {
       "title": "沒有結果",
       "description": "沒有符合搜尋的藍圖。"
+    },
+    "materials": {
+      "title": "沒有材料",
+      "description": "此藍圖不包含任何可放置的方塊。"
     }
   },
   "messages": {
@@ -40,10 +54,25 @@
     "deleted": "藍圖已刪除",
     "unsupportedFormat": "只允許 .litematic、.schem 和 .schematic 檔案。",
     "fileRequired": "請選擇要上傳的藍圖檔案。",
-    "updated": "藍圖已更新"
+    "updated": "藍圖已更新",
+    "checklistFailed": "更新清單失敗"
   },
   "deleteConfirmation": {
     "title": "刪除藍圖",
     "description": "永久刪除「{{name}}」？已儲存的檔案也會一併刪除。"
+  },
+  "materials": {
+    "summary": "{{types}} 種材料 · {{blocks}} 個方塊",
+    "material": "材料",
+    "count": "數量",
+    "gathered": "已收集",
+    "progress": "已收集 {{checked}} / {{total}}"
+  },
+  "viewer": {
+    "hint": "拖動旋轉 · 滾輪或雙指縮放",
+    "reset": "重設視角",
+    "zoomIn": "放大",
+    "zoomOut": "縮小",
+    "webglError": "此瀏覽器不支援 3D 檢視。"
   }
 }

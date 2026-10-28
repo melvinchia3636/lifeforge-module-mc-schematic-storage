@@ -6,7 +6,9 @@
     "download": "Muat Turun",
     "delete": "Padam",
     "preview": "Lihat Pratonton",
-    "edit": "Sunting"
+    "edit": "Sunting",
+    "materials": "Bahan",
+    "view": "Lihat"
   },
   "inputs": {
     "name": "Nama",
@@ -15,7 +17,9 @@
   },
   "modals": {
     "upload": "Muat Naik Skematik",
-    "modify": "Ubah Skematik"
+    "modify": "Ubah Skematik",
+    "materials": "Bahan Skematik",
+    "viewer": "Pelihat Skematik"
   },
   "items": {
     "schematic": "skematik"
@@ -25,6 +29,12 @@
     "schem": "Sponge",
     "schematic": "MCEdit"
   },
+  "metadata": {
+    "blocks": "Blok",
+    "materialTypes": "Jenis Bahan",
+    "fileSize": "Saiz Fail",
+    "created": "Dicipta"
+  },
   "empty": {
     "schematic": {
       "title": "Belum Ada Skematik",
@@ -33,6 +43,10 @@
     "result": {
       "title": "Tiada Hasil",
       "description": "Tiada skematik sepadan dengan carian anda."
+    },
+    "materials": {
+      "title": "Tiada Bahan",
+      "description": "Skematik ini tidak mengandungi sebarang blok yang boleh diletakkan."
     }
   },
   "messages": {
@@ -40,10 +54,25 @@
     "deleted": "Skematik dipadam",
     "unsupportedFormat": "Hanya fail .litematic, .schem, dan .schematic dibenarkan.",
     "fileRequired": "Pilih fail skematik untuk dimuat naik.",
-    "updated": "Skematik dikemas kini"
+    "updated": "Skematik dikemas kini",
+    "checklistFailed": "Gagal mengemas kini senarai semak"
   },
   "deleteConfirmation": {
     "title": "Padam Skematik",
     "description": "Padam \"{{name}}\" secara kekal? Fail yang disimpan juga akan dipadam."
+  },
+  "materials": {
+    "summary": "{{types}} jenis bahan · {{blocks}} blok",
+    "material": "Bahan",
+    "count": "Kuantiti",
+    "gathered": "Dikumpul",
+    "progress": "{{checked}} / {{total}} dikumpul"
+  },
+  "viewer": {
+    "hint": "Seret untuk putar · Tatal atau cubit untuk zum",
+    "reset": "Tetap semula pandangan",
+    "zoomIn": "Zum masuk",
+    "zoomOut": "Zum keluar",
+    "webglError": "Paparan 3D tidak disokong dalam pelayar ini."
   }
 }

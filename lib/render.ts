@@ -48,6 +48,8 @@ precision highp sampler2D;
 uniform sampler2D uBuffer;
 uniform ivec2 uSize;
 uniform int uSS;
+uniform vec3 uColor;
+uniform bool uTransparent;
 out vec4 outColor;
 
 bool differs(vec4 a, vec4 b) {
@@ -72,7 +74,11 @@ void main() {
     }
   }
   float cover = hits / total;
-  outColor = vec4(vec3(1.0 - cover), 1.0);
+  if (uTransparent) {
+    outColor = vec4(uColor * cover, cover);
+  } else {
+    outColor = vec4(vec3(1.0 - cover), 1.0);
+  }
 }`
 
 const VS_QUAD = `#version 300 es
@@ -127,13 +133,21 @@ export interface CameraOptions {
 
 export interface RendererOptions {
   size?: number
+  width?: number
+  height?: number
   supersample?: number
   margin?: number
+  /** Draw only the line art, with a transparent background. */
+  transparent?: boolean
+  /** Line colour used when `transparent` is enabled. */
+  lineColor?: string
 }
 
 export interface Renderer {
   draw: (options?: CameraOptions) => void
   size: number
+  width: number
+  height: number
   faces: number
   vertices: number
 }
@@ -171,13 +185,44 @@ function boundingVolume(
   return { center, radius }
 }
 
+function parseColor(color: string): [number, number, number] {
+  if (color.startsWith('rgb')) {
+    const values = color
+      .slice(color.indexOf('(') + 1, color.lastIndexOf(')'))
+      .split(/[,\s]+/)
+      .map(value => Number.parseFloat(value))
+
+    return [
+      (values[0] ?? 0) / 255,
+      (values[1] ?? 0) / 255,
+      (values[2] ?? 0) / 255
+    ]
+  }
+
+  const value = color.replace('#', '')
+
+  return [
+    parseInt(value.slice(0, 2), 16) / 255,
+    parseInt(value.slice(2, 4), 16) / 255,
+    parseInt(value.slice(4, 6), 16) / 255
+  ]
+}
+
 /** Build a reusable renderer for one scene (keeps GL buffers between draws). */
 export function createRenderer(
   canvas: HTMLCanvasElement,
   scene: Scene,
   options: RendererOptions = {}
 ): Renderer {
-  const { size = 512, supersample = 3, margin = 0.06 } = options
+  const {
+    size = 512,
+    width = size,
+    height = width,
+    supersample = 3,
+    margin = 0.06,
+    transparent = false,
+    lineColor = '#000000'
+  } = options
   const gl = canvas.getContext('webgl2', {
     antialias: false,
     preserveDrawingBuffer: true
@@ -193,11 +238,11 @@ export function createRenderer(
 
   const ss = Math.max(1, Math.min(4, supersample))
 
-  canvas.width = size
-  canvas.height = size
+  canvas.width = width
+  canvas.height = height
 
-  const w = size * ss
-  const h = size * ss
+  const w = Math.round(width * ss)
+  const h = Math.round(height * ss)
 
   const tex = gl.createTexture()
 
@@ -254,6 +299,9 @@ export function createRenderer(
   gl.vertexAttribPointer(aPlane, 1, gl.FLOAT, false, stride, 24)
 
   const edge = program(gl, VS_QUAD, FS_EDGE)
+  const edgeColor = gl.getUniformLocation(edge, 'uColor')
+  const edgeTransparent = gl.getUniformLocation(edge, 'uTransparent')
+  const lineColorRgb = parseColor(lineColor)
   // separate VAO for the full-screen triangle, otherwise its attribute setup
   // overwrites the scene VAO and later frames render garbage
   const quadVao = gl.createVertexArray()
@@ -324,14 +372,18 @@ gl.bindVertexArray(vao)
     gl.uniform3f(uniforms.uRight, r[0], r[1], r[2])
     gl.uniform3f(uniforms.uUp, up[0], up[1], up[2])
     gl.uniform3f(uniforms.uDir, d[0], d[1], d[2])
-    gl.uniform2f(uniforms.uScale, 2 / side, 2 / side)
+    // NDC spans the full viewport, so a rectangular canvas needs the x scale
+    // corrected by the aspect ratio to keep world units square.
+    const scale = 2 / side
+
+    gl.uniform2f(uniforms.uScale, scale * (height / width), scale)
     gl.uniform2f(uniforms.uCenter, cx, cy)
     gl.uniform1f(uniforms.uDepthScale, 2 / (2 * radius + 2))
     gl.uniform1f(uniforms.uDepthCenter, cd)
     gl.drawArrays(gl.TRIANGLES, 0, vertexCount)
 
     gl.bindFramebuffer(gl.FRAMEBUFFER, null)
-    gl.viewport(0, 0, size, size)
+    gl.viewport(0, 0, width, height)
     gl.disable(gl.DEPTH_TEST)
     
 gl.useProgram(edge)
@@ -342,10 +394,19 @@ gl.bindVertexArray(quadVao)
     gl.uniform1i(gl.getUniformLocation(edge, 'uBuffer'), 0)
     gl.uniform2i(gl.getUniformLocation(edge, 'uSize'), w, h)
     gl.uniform1i(gl.getUniformLocation(edge, 'uSS'), ss)
+    gl.uniform3f(edgeColor, ...lineColorRgb)
+    gl.uniform1i(edgeTransparent, transparent ? 1 : 0)
     gl.drawArrays(gl.TRIANGLES, 0, 3)
   }
 
-  return { draw, size, faces: scene.faces, vertices: vertexCount }
+  return {
+    draw,
+    size,
+    width,
+    height,
+    faces: scene.faces,
+    vertices: vertexCount
+  }
 }
 
 /** One-shot convenience wrapper. */

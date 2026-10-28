@@ -10,8 +10,8 @@ function GridView({ entries }: { entries: SchematicEntry[] }) {
       gap="sm"
       mb="lg"
       templateCols={{
-        base: 'repeat(auto-fill,minmax(12rem,1fr))',
-        sm: 'repeat(auto-fill,minmax(16rem,1fr))'
+        base: 'repeat(auto-fill,minmax(16rem,1fr))',
+        sm: 'repeat(auto-fill,minmax(20rem,1fr))'
       }}
     >
       {entries.map(entry => (

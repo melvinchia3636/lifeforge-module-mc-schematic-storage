@@ -4,6 +4,7 @@ import type { Readable } from 'node:stream'
 import z from 'zod'
 
 import { parseSchematic } from '../../lib/parse'
+import { summarizeMaterials } from '../../lib/materials'
 import { blocksToSvg } from '../../lib/svg'
 import forge from '../forge'
 import { schematicEntries } from '../schema.drizzle'
@@ -125,9 +126,15 @@ export const create = forge
       ) as ArrayBuffer
 
       let preview: string
+      let blockCount: number
+      let materialTypes: number
 
       try {
-        preview = renderPreview(await parseSchematic(buffer), body.rotation)
+        const parsed = await parseSchematic(buffer)
+
+        preview = renderPreview(parsed, body.rotation)
+        blockCount = parsed.blocks.length
+        materialTypes = summarizeMaterials(parsed).length
       } catch (error) {
         console.error('Failed to generate schematic preview:', error)
 
@@ -168,6 +175,8 @@ export const create = forge
           preview: previewRef.key,
           preview_width: previewWidth,
           preview_height: previewHeight,
+          block_count: blockCount,
+          material_types: materialTypes,
           file_size: file.size
         })
         .returning()
@@ -269,6 +278,45 @@ export const update = forge
       return response.ok(updated)
     }
   )
+
+export const setCheckedMaterial = forge
+  .mutation({
+    description: 'Toggle a material in a schematic checklist',
+    input: {
+      query: z.object({
+        id: forge.existsIn(z.string(), schematicEntries, { select: true })
+      }),
+      body: z.object({
+        material: z.string().trim().min(1),
+        checked: z.boolean()
+      })
+    },
+    output: {
+      OK: schematicDto
+    }
+  })
+  .callback(async ({ db, existing, query: { id }, body, response }) => {
+    const entry = existing.one(schematicEntries, id)
+    const checked = new Set(entry.checked_materials)
+
+    if (body.checked) {
+      checked.add(body.material)
+    } else {
+      checked.delete(body.material)
+    }
+
+    const [updated] = await db
+      .update(schematicEntries)
+      .set({ checked_materials: [...checked].sort() })
+      .where(eq(schematicEntries.id, id))
+      .returning()
+
+    if (!updated) {
+      return response.badRequest('Failed to update the checklist')
+    }
+
+    return response.ok(updated)
+  })
 
 export const remove = forge
   .mutation({

@@ -1,5 +1,11 @@
 import { prop } from '../geometry'
-import type { BlockProps, ResolverOutput, ShapeBox, Vec3 } from '../types'
+import type {
+  BlockProps,
+  BoxEntry,
+  ResolverOutput,
+  ShapeBox,
+  Vec3
+} from '../types'
 
 export default function decoration(
   name: string,
@@ -23,6 +29,47 @@ export default function decoration(
 
   if (['chest', 'trapped_chest', 'ender_chest', 'barrel'].includes(n)) {
     return [[0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375]]
+  }
+
+  if (
+    (n === 'lantern' || n.endsWith('_lantern')) &&
+    n !== 'jack_o_lantern' &&
+    n !== 'sea_lantern'
+  ) {
+    const hanging = prop(props, 'hanging', 'false') === 'true'
+    const tilt = {
+      axis: 'y' as const,
+      angle: 45,
+      origin: [0.5, 0.5, 0.5] as Vec3
+    }
+
+    const boxes: BoxEntry[] = hanging
+      ? [
+          [5 / 16, 1 / 16, 5 / 16, 11 / 16, 8 / 16, 11 / 16],
+          [6 / 16, 8 / 16, 6 / 16, 10 / 16, 10 / 16, 10 / 16],
+          {
+            box: [6.5 / 16, 11 / 16, 8 / 16, 9.5 / 16, 15 / 16, 8 / 16],
+            tilt
+          },
+          {
+            box: [8 / 16, 10 / 16, 6.5 / 16, 8 / 16, 1, 9.5 / 16],
+            tilt
+          }
+        ]
+      : [
+          [5 / 16, 0, 5 / 16, 11 / 16, 7 / 16, 11 / 16],
+          [6 / 16, 7 / 16, 6 / 16, 10 / 16, 9 / 16, 10 / 16],
+          {
+            box: [6.5 / 16, 9 / 16, 8 / 16, 9.5 / 16, 11 / 16, 8 / 16],
+            tilt
+          },
+          {
+            box: [8 / 16, 9 / 16, 6.5 / 16, 8 / 16, 11 / 16, 9.5 / 16],
+            tilt
+          }
+        ]
+
+    return { boxes, yaw: 0 }
   }
 
   if (n === 'hopper') {

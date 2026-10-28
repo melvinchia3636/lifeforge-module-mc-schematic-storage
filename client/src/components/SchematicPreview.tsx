@@ -1,7 +1,8 @@
 import type { SchematicEntry } from '@'
 
-import { Box, Flex, Icon, surface } from '@lifeforge/ui'
+import { Box, Flex, Icon, surface, useModalStore } from '@lifeforge/ui'
 
+import { SchematicViewerModal } from '@/components/modals/SchematicViewerModal'
 import { forgeAPI } from '@/manifest'
 import { DEFAULT_FORMAT, FORMAT_META } from '@/utils/formatMeta'
 
@@ -14,11 +15,13 @@ import { DEFAULT_FORMAT, FORMAT_META } from '@/utils/formatMeta'
 export function SchematicPreviewFrame({
   previewUrl,
   label,
-  fallbackIcon
+  fallbackIcon,
+  fill = false
 }: {
   previewUrl: string | null
   label?: string
   fallbackIcon?: string
+  fill?: boolean
 }) {
   return (
     <Box
@@ -27,7 +30,7 @@ export function SchematicPreviewFrame({
       height="100%"
       overflow="hidden"
       r="md"
-      width="100%"
+      width={fill ? 'auto' : '100%'}
     >
       {previewUrl ? (
         <Box
@@ -61,17 +64,46 @@ export function SchematicPreviewFrame({
   )
 }
 
-export function SchematicPreview({ entry }: { entry: SchematicEntry }) {
+export function SchematicPreview({
+  entry,
+  fill = false
+}: {
+  entry: SchematicEntry
+  fill?: boolean
+}) {
+  const { open } = useModalStore()
+
   const format = FORMAT_META[entry.format] ?? DEFAULT_FORMAT
   const previewUrl = entry.preview
     ? `${forgeAPI.getMedia({ key: entry.preview })}`
     : null
 
+  const openViewer = () => {
+    open(SchematicViewerModal, { entry })
+  }
+
   return (
-    <SchematicPreviewFrame
-      fallbackIcon={format.icon}
-      label={entry.name}
-      previewUrl={previewUrl}
-    />
+    <Box
+      aria-label={entry.name}
+      height={fill ? '100%' : undefined}
+      role="button"
+      style={{ cursor: 'pointer' }}
+      tabIndex={0}
+      width={fill ? 'auto' : undefined}
+      onClick={openViewer}
+      onKeyDown={event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          openViewer()
+        }
+      }}
+    >
+      <SchematicPreviewFrame
+        fallbackIcon={format.icon}
+        fill={fill}
+        label={entry.name}
+        previewUrl={previewUrl}
+      />
+    </Box>
   )
 }
