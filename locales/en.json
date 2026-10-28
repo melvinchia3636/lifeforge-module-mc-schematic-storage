@@ -30,6 +30,7 @@
     "schematic": "MCEdit"
   },
   "metadata": {
+    "dimensions": "Dimensions",
     "blocks": "Blocks",
     "materialTypes": "Material Types",
     "fileSize": "File Size",

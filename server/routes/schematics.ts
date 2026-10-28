@@ -128,6 +128,9 @@ export const create = forge
       let preview: string
       let blockCount: number
       let materialTypes: number
+      let sizeX: number
+      let sizeY: number
+      let sizeZ: number
 
       try {
         const parsed = await parseSchematic(buffer)
@@ -135,6 +138,9 @@ export const create = forge
         preview = renderPreview(parsed, body.rotation)
         blockCount = parsed.blocks.length
         materialTypes = summarizeMaterials(parsed).length
+        sizeX = parsed.size[0]
+        sizeY = parsed.size[1]
+        sizeZ = parsed.size[2]
       } catch (error) {
         console.error('Failed to generate schematic preview:', error)
 
@@ -175,6 +181,9 @@ export const create = forge
           preview: previewRef.key,
           preview_width: previewWidth,
           preview_height: previewHeight,
+          size_x: sizeX,
+          size_y: sizeY,
+          size_z: sizeZ,
           block_count: blockCount,
           material_types: materialTypes,
           file_size: file.size

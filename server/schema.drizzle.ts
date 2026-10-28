@@ -14,6 +14,9 @@ export const schematicEntries = pgTable('schematics', {
   rotation: integer('rotation').notNull().default(0),
   preview_width: integer('preview_width').notNull().default(0),
   preview_height: integer('preview_height').notNull().default(0),
+  size_x: integer('size_x').notNull().default(0),
+  size_y: integer('size_y').notNull().default(0),
+  size_z: integer('size_z').notNull().default(0),
   block_count: integer('block_count').notNull().default(0),
   material_types: integer('material_types').notNull().default(0),
   checked_materials: jsonb('checked_materials')

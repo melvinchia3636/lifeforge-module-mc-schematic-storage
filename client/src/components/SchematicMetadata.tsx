@@ -11,6 +11,11 @@ export function SchematicMetadata({ entry }: { entry: SchematicEntry }) {
 
   const items = [
     {
+      icon: 'tabler:ruler-measure',
+      key: 'dimensions',
+      value: `${entry.size_x} × ${entry.size_y} × ${entry.size_z}`
+    },
+    {
       icon: 'tabler:cube',
       key: 'blocks',
       value: entry.block_count.toLocaleString()
@@ -42,7 +47,9 @@ export function SchematicMetadata({ entry }: { entry: SchematicEntry }) {
               {t(`metadata.${item.key}`)}
             </Text>
           </Flex>
-          <Text>{item.value}</Text>
+          <Text whiteSpace={item.key === 'dimensions' ? 'nowrap' : undefined}>
+            {item.value}
+          </Text>
         </Box>
       ))}
     </Flex>

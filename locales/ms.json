@@ -30,6 +30,7 @@
     "schematic": "MCEdit"
   },
   "metadata": {
+    "dimensions": "Dimensi",
     "blocks": "Blok",
     "materialTypes": "Jenis Bahan",
     "fileSize": "Saiz Fail",

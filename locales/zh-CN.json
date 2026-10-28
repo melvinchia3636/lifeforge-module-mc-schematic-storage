@@ -30,6 +30,7 @@
     "schematic": "MCEdit"
   },
   "metadata": {
+    "dimensions": "尺寸",
     "blocks": "方块",
     "materialTypes": "材料种类",
     "fileSize": "文件大小",

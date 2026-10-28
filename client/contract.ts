@@ -32,6 +32,9 @@ export interface EndpointSchematicsCreate_OutputCREATED {
   rotation: number;
   preview_width: number;
   preview_height: number;
+  size_x: number;
+  size_y: number;
+  size_z: number;
   block_count: number;
   material_types: number;
   checked_materials:
@@ -67,6 +70,9 @@ export interface EndpointSchematicsList_OutputOK {
     rotation: number;
     preview_width: number;
     preview_height: number;
+    size_x: number;
+    size_y: number;
+    size_z: number;
     block_count: number;
     material_types: number;
     checked_materials:
@@ -125,6 +131,9 @@ export interface EndpointSchematicsSetCheckedMaterial_OutputOK {
   rotation: number;
   preview_width: number;
   preview_height: number;
+  size_x: number;
+  size_y: number;
+  size_z: number;
   block_count: number;
   material_types: number;
   checked_materials:
@@ -163,6 +172,9 @@ export interface EndpointSchematicsUpdate_OutputOK {
   rotation: number;
   preview_width: number;
   preview_height: number;
+  size_x: number;
+  size_y: number;
+  size_z: number;
   block_count: number;
   material_types: number;
   checked_materials:
