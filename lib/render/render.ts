@@ -4,7 +4,7 @@
 // The camera is free: pass yaw/pitch/zoom to draw().
 
 import { basis } from './camera'
-import type { Scene, Vec3 } from './types'
+import type { Scene, Vec3 } from '../types'
 
 export { basis }
 

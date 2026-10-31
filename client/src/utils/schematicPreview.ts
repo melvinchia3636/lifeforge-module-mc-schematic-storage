@@ -1,5 +1,5 @@
 import { parseSchematic } from '../../../lib/parse'
-import { blocksToSvg } from '../../../lib/svg'
+import { blocksToSvg } from '../../../lib/render'
 import type { ParsedSchematic } from '../../../lib/types'
 
 export type { ParsedSchematic }

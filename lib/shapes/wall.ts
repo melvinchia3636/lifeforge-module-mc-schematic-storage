@@ -1,4 +1,4 @@
-import { boxPx, prop, rotY } from '../geometry'
+import { boxPx, prop, rotY } from './geometry'
 import type { BlockProps, Box, ResolverOutput } from '../types'
 
 const SIDES: Record<string, number> = {

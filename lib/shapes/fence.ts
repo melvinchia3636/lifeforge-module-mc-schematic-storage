@@ -1,4 +1,4 @@
-import { TURN_STD, arm, boolDirs, boxPx, prop, rotY } from '../geometry'
+import { TURN_STD, arm, boolDirs, boxPx, prop, rotY } from './geometry'
 import type { BlockProps, Box, ResolverOutput } from '../types'
 
 const GATES: Record<string, Box[]> = {

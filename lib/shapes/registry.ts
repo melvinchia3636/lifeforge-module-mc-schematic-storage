@@ -1,6 +1,6 @@
 import { FULL } from './geometry'
-import { resolvers } from './shapes'
-import type { BlockProps, Shape } from './types'
+import { resolvers } from './index'
+import type { BlockProps, Shape } from '../types'
 
 const cache = new Map<string, Shape>()
 

@@ -3,7 +3,7 @@
 // in X-fastest order.
 
 import type { NbtCompound } from './nbt'
-import type { BlockProps, ParsedSchematic } from './types'
+import type { BlockProps, ParsedSchematic } from '../types'
 
 interface SpongePaletteEntry {
   name: string

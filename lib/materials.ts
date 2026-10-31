@@ -2,7 +2,7 @@
 // obtainable item, with variants merged and multi-block structures (doors,
 // beds, tall plants) counted once.
 
-import { isAir } from './litematic'
+import { isAir } from './parse/litematic'
 import type { BlockProps, ParsedSchematic } from './types'
 
 export interface MaterialCount {

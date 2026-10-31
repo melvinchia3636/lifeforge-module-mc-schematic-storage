@@ -1,7 +1,7 @@
 import { regionsToBlocks } from './litematic'
 import { loadLitematicNbt } from './nbt'
 import { isSponge, spongeToBlocks } from './schem'
-import type { ParsedSchematic } from './types'
+import type { ParsedSchematic } from '../types'
 
 /** Parse a .litematic or .schem ArrayBuffer into { size, blocks }. */
 export async function parseSchematic(

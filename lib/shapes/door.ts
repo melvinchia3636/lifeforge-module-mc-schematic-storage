@@ -1,4 +1,4 @@
-import { TURN_DOOR, TURN_STD, prop, rotY } from '../geometry'
+import { TURN_DOOR, TURN_STD, prop, rotY } from './geometry'
 import type { BlockProps, ResolverOutput } from '../types'
 
 export function trapdoor(

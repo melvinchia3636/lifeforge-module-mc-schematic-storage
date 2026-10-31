@@ -4,7 +4,7 @@
 // Levers need a tilted handle: vanilla rotates the handle element ±45° about
 // its base, so the shape carries per-box tilt plus shape-level x/y rotations.
 
-import { TURN_STD, flipX, prop, rotY } from '../geometry'
+import { TURN_STD, flipX, prop, rotY } from './geometry'
 import type { BlockProps, Box, BoxEntry, ResolverOutput } from '../types'
 
 export default function attachable(

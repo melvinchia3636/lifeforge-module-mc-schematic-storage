@@ -5,14 +5,14 @@
 //   2. blockstate `x` (wall/ceiling mount),
 //   3. blockstate `y` (facing), plus the shape's arbitrary yaw (signs).
 
-import { resolve } from './registry'
+import { resolve } from '../shapes/registry'
 import type {
   Box,
   Face,
   ParsedSchematic,
   Scene,
   Vec3
-} from './types'
+} from '../types'
 
 export const W: Vec3 = [
   1 / Math.sqrt(3),

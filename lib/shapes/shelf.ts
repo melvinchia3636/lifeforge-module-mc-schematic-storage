@@ -1,4 +1,4 @@
-import { TURN_STD, prop, rotY } from '../geometry'
+import { TURN_STD, prop, rotY } from './geometry'
 import type { BlockProps, Box, ResolverOutput } from '../types'
 
 export default function shelf(

@@ -5,7 +5,7 @@ import z from 'zod'
 
 import { parseSchematic } from '../../lib/parse'
 import { summarizeMaterials } from '../../lib/materials'
-import { blocksToSvg } from '../../lib/svg'
+import { blocksToSvg } from '../../lib/render'
 import forge from '../forge'
 import { schematicEntries } from '../schema.drizzle'
 

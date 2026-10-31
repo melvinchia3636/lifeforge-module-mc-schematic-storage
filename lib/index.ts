@@ -4,10 +4,8 @@ import {
   type Renderer,
   type RendererOptions,
   renderScene
-} from './render'
+, buildScene, blocksToSvg, sceneToSvg, type SvgOptions } from './render'
 import { parseSchematic } from './parse'
-import { buildScene } from './scene'
-import { blocksToSvg, sceneToSvg, type SvgOptions } from './svg'
 import type { ParsedSchematic } from './types'
 
 export type { ParsedSchematic } from './types'
@@ -16,7 +14,7 @@ export type { Scene, Box, Block, BlockProps, Shape, Vec3 } from './types'
 
 export type { CameraOptions, Renderer, RendererOptions } from './render'
 
-export type { SvgOptions } from './svg'
+export type { SvgOptions } from './render'
 
 /** Alias kept for callers that only deal with litematic files. */
 export { parseLitematic, parseSchematic } from './parse'

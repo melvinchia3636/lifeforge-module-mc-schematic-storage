@@ -2,7 +2,7 @@
 // tilted 22.5° about Z, then rotated by facing (vanilla `y` values: east 0,
 // south 90, west 180, north 270).
 
-import { TURN_DOOR, prop } from '../geometry'
+import { TURN_DOOR, prop } from './geometry'
 import type { BlockProps, ResolverOutput } from '../types'
 
 export default function torch(

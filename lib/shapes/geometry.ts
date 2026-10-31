@@ -1,7 +1,7 @@
 // Geometry primitives: boxes, transforms, blockstate helpers.
 // A box is [x0, y0, z0, x1, y1, z1] in block units, model's y=0 orientation.
 
-import type { BlockProps, Box } from './types'
+import type { BlockProps, Box } from '../types'
 
 export const FULL: Box = [0, 0, 0, 1, 1, 1]
 

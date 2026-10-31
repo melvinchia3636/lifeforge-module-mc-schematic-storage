@@ -1,4 +1,4 @@
-import { TURN_STD, boxPx, prop, rotY } from '../geometry'
+import { TURN_STD, boxPx, prop, rotY } from './geometry'
 import type { BlockProps, Box, ResolverOutput } from '../types'
 
 const STANDING: Box[] = [

@@ -56,7 +56,7 @@ function EntryItem({ entry }: { entry: SchematicEntry }) {
             size="sm"
             width="min-content"
           />
-          <Text truncate as="h3" size="lg" weight="semibold">
+          <Text truncate as="h3" size="xl" weight="semibold">
             {entry.name}
           </Text>
           <SchematicMetadata entry={entry} />

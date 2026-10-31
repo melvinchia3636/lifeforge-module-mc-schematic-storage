@@ -1,6 +1,6 @@
 // Litematica region decoding: palette + packed block states -> placed blocks.
 
-import type { BlockProps, ParsedSchematic } from './types'
+import type { BlockProps, ParsedSchematic } from '../types'
 import type { NbtCompound } from './nbt'
 
 const AIR = /(^|:)(air|cave_air|void_air|structure_void|light)$/

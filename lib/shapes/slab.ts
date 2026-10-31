@@ -1,4 +1,4 @@
-import { FULL, prop } from '../geometry'
+import { FULL, prop } from './geometry'
 import type { BlockProps, ResolverOutput } from '../types'
 
 export default function slab(

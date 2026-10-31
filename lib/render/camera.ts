@@ -1,4 +1,4 @@
-import type { Vec3 } from './types'
+import type { Vec3 } from '../types'
 
 export interface CameraBasis {
   d: Vec3

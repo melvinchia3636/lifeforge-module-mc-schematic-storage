@@ -1,4 +1,4 @@
-import { arm, boolDirs } from '../geometry'
+import { arm, boolDirs } from './geometry'
 import type { BlockProps, Box, ResolverOutput } from '../types'
 
 export default function pane(

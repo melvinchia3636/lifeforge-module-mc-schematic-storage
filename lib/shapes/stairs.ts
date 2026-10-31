@@ -1,4 +1,4 @@
-import { TURN_DOOR, prop, rotX180, rotY } from '../geometry'
+import { TURN_DOOR, prop, rotX180, rotY } from './geometry'
 import type { BlockProps, Box, ResolverOutput } from '../types'
 
 export default function stairs(
