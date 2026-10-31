@@ -8,7 +8,8 @@
     "preview": "View Preview",
     "edit": "Edit",
     "materials": "Materials",
-    "view": "View"
+    "view": "View",
+    "downloadRender": "Download Render"
   },
   "inputs": {
     "name": "Name",
@@ -56,7 +57,8 @@
     "unsupportedFormat": "Only .litematic, .schem, and .schematic files are allowed.",
     "fileRequired": "Select a schematic file to upload.",
     "updated": "Schematic updated",
-    "checklistFailed": "Failed to update the checklist"
+    "checklistFailed": "Failed to update the checklist",
+    "renderDownloadFailed": "Failed to download the schematic render"
   },
   "deleteConfirmation": {
     "title": "Delete Schematic",

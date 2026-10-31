@@ -1,4 +1,6 @@
 import type { SchematicEntry } from '@'
+import { useState } from 'react'
+
 import { useForgeMutation } from '@lifeforge/api'
 import { useModuleTranslation } from '@lifeforge/localization'
 import {
@@ -11,10 +13,12 @@ import {
 
 import { ModifySchematicModal } from '@/components/modals/ModifySchematicModal'
 import { forgeAPI } from '@/manifest'
+import { downloadSchematicRender } from '@/utils/downloadSchematicRender'
 
 export function SchematicActions({ entry }: { entry: SchematicEntry }) {
   const { t } = useModuleTranslation()
   const { open } = useModalStore()
+  const [downloadingRender, setDownloadingRender] = useState(false)
 
   const removeMutation = useForgeMutation(
     forgeAPI.schematics.remove.input({ id: entry.id }),
@@ -32,6 +36,21 @@ export function SchematicActions({ entry }: { entry: SchematicEntry }) {
       forgeAPI.getMedia({ key: entry.file, download: 'true' }),
       '_blank'
     )
+  }
+
+  const handleDownloadRender = async () => {
+    setDownloadingRender(true)
+
+    try {
+      await downloadSchematicRender(entry, {
+        background: '#ffffff',
+        lineColor: '#000000'
+      })
+    } catch {
+      toast.error(t('messages.renderDownloadFailed'))
+    } finally {
+      setDownloadingRender(false)
+    }
   }
 
   const handleEdit = () => {
@@ -55,6 +74,13 @@ export function SchematicActions({ entry }: { entry: SchematicEntry }) {
         icon="tabler:download"
         label="Download"
         onClick={handleDownload}
+      />
+      <ContextMenuItem
+        icon="tabler:photo-down"
+        label={t('buttons.downloadRender')}
+        loading={downloadingRender}
+        shouldCloseMenuOnClick={false}
+        onClick={handleDownloadRender}
       />
       <ContextMenuItem
         icon="tabler:pencil"
