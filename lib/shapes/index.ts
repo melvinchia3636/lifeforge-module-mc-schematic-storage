@@ -1,5 +1,6 @@
 // Resolver order = matching precedence. Add a module here for a new family.
 import attachable from './attach'
+import banner from './banner'
 import barrel from './barrel'
 import bed from './bed'
 import carpet from './carpet'
@@ -45,6 +46,7 @@ export const resolvers: Resolver[] = [
   door,
   ladder,
   attachable,
+  banner,
   carpet,
   pressurePlate,
   snow,
